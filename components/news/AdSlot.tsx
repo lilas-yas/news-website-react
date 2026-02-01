@@ -1,27 +1,30 @@
 "use client";
 
 import { useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string;
-  slot?: string; // Ad unit slot id (data-ad-slot)
+  slot?: string;
+  // حتى ما ينكسر أي استدعاء قديم كان يمرر ad وهمي
+  ad?: any;
 };
 
-export default function AdSlot({
+export function AdSlot({
   className,
-  slot = "3029779867", // ✅ حطي هون data-ad-slot تبعك
+  slot = "3029779867",
 }: Props) {
   useEffect(() => {
     try {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch {
-      // ignore (adblock / dev)
+    } catch (e) {
+      // تجاهل (adblock / dev)
     }
   }, []);
 
   return (
-    <div className={className} style={{ margin: "24px 0" }}>
+    <div className={cn("my-6", className)}>
       <ins
         className="adsbygoogle"
         style={{ display: "block", minHeight: 250, width: "100%" }}
@@ -33,3 +36,5 @@ export default function AdSlot({
     </div>
   );
 }
+
+export default AdSlot;
