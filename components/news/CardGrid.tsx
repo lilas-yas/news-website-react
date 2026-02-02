@@ -2,7 +2,7 @@
 
 import { Article, CardData } from "@/lib/types";
 import { NewsCard } from "./NewsCard";
-import { AdSlot } from "./AdSlot";
+import AdSlot from "./AdSlot";
 
 interface CardGridProps {
   articles: Article[];

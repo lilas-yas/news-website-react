@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ContentBlock } from "@/lib/types";
-import { AdSlot } from "./AdSlot";
+import AdSlot from "./AdSlot";
 
 interface ArticleBodyProps {
   content: ContentBlock[];
