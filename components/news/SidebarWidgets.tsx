@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react"
+import React, { useState } from "react";
 
-import { useState } from "react";
 import { Article, CardData } from "@/lib/types";
 import { NewsCard } from "./NewsCard";
-import { AdSlot } from "./AdSlot";
+import AdSlot from "./AdSlot";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TrendingUp, Mail, CheckCircle } from "lucide-react";
+
+/* ================= Most Read ================= */
 
 interface MostReadWidgetProps {
   articles: Article[];
@@ -29,6 +30,7 @@ export function MostReadWidget({ articles }: MostReadWidgetProps) {
             surface: "home",
             slot_position: index + 1,
           };
+
           return (
             <NewsCard
               key={article.article_id}
@@ -42,6 +44,8 @@ export function MostReadWidget({ articles }: MostReadWidgetProps) {
     </div>
   );
 }
+
+/* ================= Trending ================= */
 
 interface TrendingWidgetProps {
   tags: string[];
@@ -69,6 +73,8 @@ export function TrendingWidget({ tags }: TrendingWidgetProps) {
   );
 }
 
+/* ================= Newsletter ================= */
+
 export function NewsletterWidget() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -88,7 +94,6 @@ export function NewsletterWidget() {
       return;
     }
 
-    // Mock success
     setSubmitted(true);
   };
 
@@ -143,13 +148,17 @@ export function NewsletterWidget() {
   );
 }
 
+/* ================= Sidebar Ad ================= */
+
 export function SidebarAdWidget() {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <AdSlot slot="sidebar" />
+    <div className="flex flex-col items-center">
+      <AdSlot className="w-full my-6" slot="3029779867" />
     </div>
   );
 }
+
+/* ================= Sidebar ================= */
 
 interface SidebarProps {
   mostReadArticles?: Article[];
@@ -169,9 +178,13 @@ export function Sidebar({
       {mostReadArticles.length > 0 && (
         <MostReadWidget articles={mostReadArticles} />
       )}
+
       {showAds && <SidebarAdWidget />}
+
       {trendingTags.length > 0 && <TrendingWidget tags={trendingTags} />}
+
       {showNewsletter && <NewsletterWidget />}
+
       {showAds && <SidebarAdWidget />}
     </aside>
   );
