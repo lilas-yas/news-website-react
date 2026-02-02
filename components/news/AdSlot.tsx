@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface AdSlotProps {
@@ -8,12 +8,7 @@ interface AdSlotProps {
   slot?: string;
 }
 
-export default function AdSlot({
-  className,
-  slot = "3029779867",
-}: AdSlotProps) {
-  const insRef = useRef<HTMLModElement | null>(null);
-
+export default function AdSlot({ className, slot = "3029779867" }: AdSlotProps) {
   useEffect(() => {
     try {
       // @ts-ignore
@@ -24,7 +19,6 @@ export default function AdSlot({
   return (
     <div className={cn("w-full my-6 min-h-[250px]", className)}>
       <ins
-        ref={insRef}
         className="adsbygoogle"
         style={{ display: "block", width: "100%", minHeight: 250 }}
         data-ad-client="ca-pub-5313554185887378"
