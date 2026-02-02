@@ -8,7 +8,7 @@ import { RelatedArticles } from "./RelatedArticles";
 import { Comments } from "./Comments";
 import { ShareButtons } from "./ShareButtons";
 import { PremiumGate } from "./PremiumGate";
-import { AdSlot } from "./AdSlot";
+import AdSlot from "./AdSlot";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, Calendar, User, ChevronLeft, ChevronRight, Lock } from "lucide-react";

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AdSlot } from "./AdSlot";
+import AdSlot from "./AdSlot";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
